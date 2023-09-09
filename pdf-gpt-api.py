@@ -16,7 +16,7 @@ app = Flask(__name__)
 # Create a directory for storing uploaded files within the app context
 UPLOAD_FOLDER = os.path.join(app.root_path, 'uploads')
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-os.environ["OPENAI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = ''
 @app.route('/process_pdf', methods=['POST'])
 def process_pdf():
     # load_dotenv()
