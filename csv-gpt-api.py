@@ -40,10 +40,10 @@ def process_csv():
     agent = create_csv_agent(
         OpenAI(temperature=0), file_path, verbose=True)
 
-    user_question = request.get('query')
+    user_question ="Analyse the csv file "   #request.get('query')
     if user_question is None or user_question == "":
         return jsonify({"error": "No user question provided"}), 400
-
+    
     response = agent.run(user_question)
     
     # You can format the response as needed, e.g., convert to JSON
