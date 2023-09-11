@@ -5,6 +5,8 @@
 *.manifest
 *.spec
 
+llama-2-7b-chat.ggmlv3.q4_0.bin
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt

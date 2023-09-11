@@ -22,11 +22,7 @@ def process_csv():
     if csv_file is None:
         return jsonify({"error": "No CSV file provided"}), 400
 
-   # Read the content of the uploaded CSV file and decode it to a string
-    # csv_content_bytes = csv_file.read()
-    # csv_content = csv_content_bytes.decode('utf-8')  # Assuming UTF-8 encoding
-    
-
+ 
   # Get the original file name
     original_filename = csv_file.filename
 
@@ -38,13 +34,14 @@ def process_csv():
 
 
     agent = create_csv_agent(
-        OpenAI(temperature=0), file_path, verbose=True)
+        OpenAI(temperature=0, max_tokens=500), file_path, verbose=True)
 
-    user_question ="Analyse the csv file "   #request.get('query')
-    if user_question is None or user_question == "":
+    prompt = "Which product line had the lowest average price"
+
+    if prompt is None or prompt == "":
         return jsonify({"error": "No user question provided"}), 400
     
-    response = agent.run(user_question)
+    response = agent.run(prompt)
     
     # You can format the response as needed, e.g., convert to JSON
     response_json = {"answer": response}
